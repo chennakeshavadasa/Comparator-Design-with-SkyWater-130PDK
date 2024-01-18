@@ -9,7 +9,7 @@ voltage VCC
 slope 1 
 format hspice_simple
 
-beginfile stimuli_tbb_opammp.cir
+beginfile stimuli_tb_opammp.cir
 set vss 0
 set vcc 1
 set en_n 1
