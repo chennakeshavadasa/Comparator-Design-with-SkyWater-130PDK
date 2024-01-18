@@ -1,3 +1,4 @@
+# ॐ Namo Vadakkumnathan ॐ
 # Comparator Design using Skywater130
 
 ## Overview
