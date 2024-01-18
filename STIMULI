@@ -1,0 +1,20 @@
+.option method=gear
+.option wnflag=1
+.param VCCGAUSS = agauss(1.8, 0.05, 1)
+.param VCC = VCCGAUSS
+.param TEMPGAUSS = agauss(40, 30, 1)
+.option temp = TEMPGAUSS
+.include stimuli_tb_opamp.cir
+.control
+ option seed=9
+ let run=0
+ dowhile run <=100
+  save all
+  tran ln 4000 uic
+  remzerovec
+  write tb_opamp.raw
+  set appendwrite
+  reset
+  let run = run +1
+ end
+.endc
