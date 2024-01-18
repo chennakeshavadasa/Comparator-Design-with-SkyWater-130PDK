@@ -21,7 +21,7 @@ set en_n 0
 s eq-100
 set start 1
 s 1
-set minus vcommon+vdelta
+set minus vcommon-vdelta
 s eval-1
 
 set minus vcommon
