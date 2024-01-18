@@ -1,4 +1,4 @@
-<p align="center"> Namo Vadakkumnathan ॐ</p>
+<p align="center">ॐ नमो वडक्कुमन्नाथन ॐ</p>
 
 # Comparator Design using Skywater130
 
