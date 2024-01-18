@@ -20,5 +20,5 @@ The design has been thoroughly simulated, taking into account device mismatch pa
 
 ## Acknowledgemnt
 
-This project is mainly based on Stefan Schippers's Comparator design
+This project is mainly based on Stefan Schippers's Comparator design.
 For more info check out the video https://youtu.be/bYbkz8FXnsQ?si=bT0JYIzKB20Gqr4L
