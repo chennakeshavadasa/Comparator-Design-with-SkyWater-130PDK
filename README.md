@@ -20,7 +20,7 @@ This repository contains the design and simulation files for a high-performance 
 
 The design has been thoroughly simulated, taking into account device mismatch parameters and the specified operating temperature range. The simulation results demonstrate the reliability and performance of the Comparator under varying conditions.
 
-## Acknowledgement
+## References
 
 This project is mainly based on Stefan Schippers's Comparator design.
 For more info check out the video https://youtu.be/bYbkz8FXnsQ?si=bT0JYIzKB20Gqr4L
