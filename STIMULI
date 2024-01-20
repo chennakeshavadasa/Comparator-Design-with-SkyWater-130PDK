@@ -22,7 +22,7 @@
  let run=0
  dowhile run <=100
   save all
-  tran ln 4000 uic
+  tran 1n 4000 uic
   remzerovec
   write tb_opamp.raw
   set appendwrite
