@@ -32,3 +32,4 @@ s 1
 set minus vcommon-vdelta
 s eval-1
 
+endfile
