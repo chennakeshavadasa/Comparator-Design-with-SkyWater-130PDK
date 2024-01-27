@@ -23,4 +23,4 @@
 
 ![Screenshot 2024-01-27 144058](https://github.com/chennakeshavadasa/Comparator-Design-with-SkyWater-130PDK/assets/123294639/ade027b5-3e6b-419b-8636-377655b67931)
 
-• Note the Plus and Minus Signal and Amplified Differential Output.
+• Note the Plus, Minus Signal and Amplified Differential Output.
