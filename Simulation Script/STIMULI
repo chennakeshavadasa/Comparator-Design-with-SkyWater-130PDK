@@ -7,12 +7,12 @@
 
 
 .param VCCGAUSS = agauss(1.8, 0.05, 1)
-.param VCC = VCCGAUSS
+.param VCC = 'VCCGAUSS'
 ** use of following line to remove VCC variations
 * .param VCC =1.8
 
 .param TEMPGAUSS = agauss(40, 30, 1)
-.option temp = TEMPGAUSS
+.option temp = 'TEMPGAUSS'
 ** use of following line to remove temperature variations
 * .option temp =25
 
