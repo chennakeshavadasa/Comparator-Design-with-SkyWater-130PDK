@@ -4,7 +4,7 @@
 ## Plus and Minus signal 
 
 
-![Screenshot 2024-01-27 143626](https://github.com/chennakeshavadasa/Comparator-Design-with-SkyWater-130PDK/assets/123294639/dacd200c-2bd8-447b-98d7-eedcabb8829f) .
+![image](https://github.com/chennakeshavadasa/Comparator-Design-with-SkyWater-130PDK/assets/123294639/39376bfb-0212-4ef0-bc1d-cf87ce716332)
 
 
 • Note that the difference between the plus and minus signal is as low as 1mV
