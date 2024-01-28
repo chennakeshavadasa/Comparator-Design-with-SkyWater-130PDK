@@ -21,8 +21,6 @@
 
 • Above image is one isolated values of DIFFOUT_N and ADJ. Note that the Comparator is able to detect and differentiate the signal but the signal doesnt have enough strength to be detected by logic circuits.
 
-**Differential output with amplification**
-
-![Screenshot 2024-01-27 144058](https://github.com/chennakeshavadasa/Comparator-Design-with-SkyWater-130PDK/assets/123294639/ade027b5-3e6b-419b-8636-377655b67931)
+![image](https://github.com/chennakeshavadasa/Comparator-Design-with-SkyWater-130PDK/assets/123294639/58c65c08-7ab9-4f7d-8f12-d281bcfd78ec)
 
 • Note the Plus, Minus Signal and Amplified Differential Output.
