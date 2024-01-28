@@ -15,7 +15,7 @@
 
 ![Screenshot (188)](https://github.com/chennakeshavadasa/Comparator-Design-with-SkyWater-130PDK/assets/123294639/e6b1f2fd-c0ca-4498-ab66-f1d0222d383b)
 
-• Above image is many different simulated values of DIFFOUT_N and ADJ.
+• Above image is simulated values of DIFFOUT_N.
 
 ![Screenshot (189)](https://github.com/chennakeshavadasa/Comparator-Design-with-SkyWater-130PDK/assets/123294639/bef4a9cc-3243-46d0-8685-757399e0ed2f)
 
