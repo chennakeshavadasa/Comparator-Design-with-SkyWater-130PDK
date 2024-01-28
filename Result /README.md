@@ -17,7 +17,7 @@
 
 • Above image is many different simulated values of DIFFOUT_N and ADJ.
 
-![Screenshot 2024-01-27 143701](https://github.com/chennakeshavadasa/Comparator-Design-with-SkyWater-130PDK/assets/123294639/675c8819-e962-4c44-9e05-8c540e95e7e1) .
+![Screenshot (189)](https://github.com/chennakeshavadasa/Comparator-Design-with-SkyWater-130PDK/assets/123294639/bef4a9cc-3243-46d0-8685-757399e0ed2f)
 
 • Above image is one isolated values of DIFFOUT_N and ADJ. Note that the Comparator is able to detect and differentiate the signal but the signal doesnt have enough strength to be detected by logic circuits.
 
