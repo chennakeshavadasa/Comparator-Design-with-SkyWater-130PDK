@@ -1,7 +1,7 @@
 <p align="center">ॐ नमो वडक्कुमन्नाथन ॐ</p>
 
 # Comparator Design using Skywater130
-
+Note: This is an ongoing project so might contain errors
 ## Overview
 
 This repository contains the design and simulation files for a high-performance Comparator capable of detecting differential signals as low as ±1mV. The design is self-calibrating, eliminating the need for circuit trimming, and achieves a sensing time of 1μsec for both calibration and sensing, without speed optimization.
