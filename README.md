@@ -1,4 +1,5 @@
 <p align="center">ॐ नमो वडक्कुमन्नाथन ॐ</p>
+<p align="center">ॐ श्रुतिस्मृतिपुराणां नामामि भगवत्पादशङ्करं लोकशङ्करं ॐ</p>
 
 # Comparator Design using Skywater130
 Note: This is an ongoing project so might contain errors
