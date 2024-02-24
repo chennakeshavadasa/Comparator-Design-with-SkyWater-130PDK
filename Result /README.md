@@ -1,4 +1,4 @@
-# Graphs depicting Plus and Minus Signal and the resultant Comparator Circuit without amplifier stage and with amplifier stage
+# Graphs depicting Plus and Minus Signal and the resultant Comparator Circuit without amplifier stage 
 
 ## Plus and Minus signal 
 
