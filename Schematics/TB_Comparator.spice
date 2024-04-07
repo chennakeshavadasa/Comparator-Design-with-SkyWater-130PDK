@@ -1,0 +1,32 @@
+** sch_path: /mnt/c/Users/NITHIN P/TB_Comparator.sch
+**.subckt TB_Comparator
+x1 START_N START VCC VSS not W_N=1 L_N=0.15 W_P=2 L_P=0.15 m=1
+V1 VCC VSS 1.8
+**** begin user architecture code
+
+.param mc_mm_switch=1
+.param mc_pr_switch=0
+.include /home/nithinpuru/pdk/sky130A/libs.tech/ngspice/corners/tt.spice
+.include /home/nithinpuru/pdk/sky130A/libs.tech/ngspice/r+c/res_typical__cap_typical.spice
+.include /home/nithinpuru/pdk/sky130A/libs.tech/ngspice/r+c/res_typical__cap_typical__lin.spice
+.include /home/nithinpuru/pdk/sky130A/libs.tech/ngspice/corners/tt/specialized_cells.spice
+
+
+blabla
+
+**** end user architecture code
+**.ends
+
+* expanding   symbol:  sky130_tests/not.sym # of pins=2
+** sym_path: /home/nithinpuru/pdk/sky130A/libs.tech/xschem/sky130_tests/not.sym
+** sch_path: /home/nithinpuru/pdk/sky130A/libs.tech/xschem/sky130_tests/not.sch
+.subckt not y a VCCPIN VSSPIN     W_N=1 L_N=0.15 W_P=2 L_P=0.15
+*.opin y
+*.ipin a
+XM1 y a VSSPIN VSSPIN sky130_fd_pr__nfet_01v8 L=L_N W=W_N nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29' pd='2*int((nf+1)/2) * (W/nf + 0.29)'
++ ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
+XM2 y a VCCPIN VCCPIN sky130_fd_pr__pfet_01v8 L=L_P W=W_P nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29' pd='2*int((nf+1)/2) * (W/nf + 0.29)'
++ ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
+.ends
+
+.end

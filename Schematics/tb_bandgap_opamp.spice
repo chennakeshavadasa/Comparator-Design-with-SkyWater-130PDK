@@ -1,0 +1,215 @@
+** sch_path: /home/nithinpuru/pdk/sky130A/libs.tech/xschem/sky130_tests/tb_bandgap_opamp.sch
+**.subckt tb_bandgap_opamp VCC START PLUS OUT MINUS EN_N
+*.ipin VCC
+*.ipin START
+*.ipin PLUS
+*.opin OUT
+*.ipin MINUS
+*.ipin EN_N
+x6 ADJ DIFFOUT_N START START_N VCC VSS passgate W_N=0.5 L_N=0.15 W_P=0.5 L_P=0.15 m=1
+XC1 ADJ VSS sky130_fd_pr__cap_mim_m3_2 W=10 L=10 MF=5 m=5
+x2 START_N START VCC VSS not W_N=1 L_N=0.15 W_P=2 L_P=0.15 m=1
+x1 EN_N MINUS PLUS DIFFOUT_N VCC VSS ADJ zero_opamp
+XM18 VTH1 VTH1 VSS VSS sky130_fd_pr__nfet_01v8 L=0.15 W=0.5 nf=1 ad='W * 0.29' as='W * 0.29' pd='2*(W + 0.29)' ps='2*(W + 0.29)' nrd=0
++ nrs=0 sa=0 sb=0 sd=0 mult=1 m=1
+I0 VSS VTH1 100n
+x3 DIFFOUT_N OUT VCC VSS START_N START EN_N gain_stage
+E5 TEMPERAT VSS VOL=' temper '
+* noconn TEMPERAT
+* noconn EN_N
+* noconn MINUS
+* noconn PLUS
+* noconn START
+* noconn VCC
+XM1 VTH2 VTH2 VSS VSS sky130_fd_pr__nfet_01v8 L=0.15 W=0.5 nf=1 ad='W * 0.29' as='W * 0.29' pd='2*(W + 0.29)' ps='2*(W + 0.29)' nrd=0
++ nrs=0 sa=0 sb=0 sd=0 mult=1 m=1
+I1 VSS VTH2 100n
+**** begin user architecture code
+
+.param mc_mm_switch=1
+.param mc_pr_switch=0
+.include /home/nithinpuru/pdk/sky130A/libs.tech/ngspice/corners/tt.spice
+.include /home/nithinpuru/pdk/sky130A/libs.tech/ngspice/r+c/res_typical__cap_typical.spice
+.include /home/nithinpuru/pdk/sky130A/libs.tech/ngspice/r+c/res_typical__cap_typical__lin.spice
+.include /home/nithinpuru/pdk/sky130A/libs.tech/ngspice/corners/tt/specialized_cells.spice
+
+**** end user architecture code
+**.ends
+
+* expanding   symbol:  sky130_tests/passgate.sym # of pins=4
+** sym_path: /home/nithinpuru/pdk/sky130A/libs.tech/xschem/sky130_tests/passgate.sym
+** sch_path: /home/nithinpuru/pdk/sky130A/libs.tech/xschem/sky130_tests/passgate.sch
+.subckt passgate Z A GP GN VCCBPIN VSSBPIN  W_N=1 L_N=0.2 W_P=1 L_P=0.2
+*.iopin A
+*.iopin Z
+*.ipin GP
+*.ipin GN
+XM1 Z GN A VSSBPIN sky130_fd_pr__nfet_01v8 L=L_N W=W_N nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29' pd='2*int((nf+1)/2) * (W/nf + 0.29)'
++ ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
+XM2 Z GP A VCCBPIN sky130_fd_pr__pfet_01v8 L=L_P W=W_P nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29' pd='2*int((nf+1)/2) * (W/nf + 0.29)'
++ ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
+* noconn VCCBPIN
+* noconn VSSBPIN
+.ends
+
+
+* expanding   symbol:  sky130_tests/not.sym # of pins=2
+** sym_path: /home/nithinpuru/pdk/sky130A/libs.tech/xschem/sky130_tests/not.sym
+** sch_path: /home/nithinpuru/pdk/sky130A/libs.tech/xschem/sky130_tests/not.sch
+.subckt not y a VCCPIN VSSPIN     W_N=1 L_N=0.15 W_P=2 L_P=0.15
+*.opin y
+*.ipin a
+XM1 y a VSSPIN VSSPIN sky130_fd_pr__nfet_01v8 L=L_N W=W_N nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29' pd='2*int((nf+1)/2) * (W/nf + 0.29)'
++ ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
+XM2 y a VCCPIN VCCPIN sky130_fd_pr__pfet_01v8 L=L_P W=W_P nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29' pd='2*int((nf+1)/2) * (W/nf + 0.29)'
++ ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
+.ends
+
+
+* expanding   symbol:  sky130_tests/zero_opamp.sym # of pins=7
+** sym_path: /home/nithinpuru/pdk/sky130A/libs.tech/xschem/sky130_tests/zero_opamp.sym
+** sch_path: /home/nithinpuru/pdk/sky130A/libs.tech/xschem/sky130_tests/zero_opamp.sch
+.subckt zero_opamp EN_N MINUS PLUS DIFFOUT VCC VSS ADJ
+*.ipin PLUS
+*.ipin MINUS
+*.ipin EN_N
+*.ipin VSS
+*.ipin VCC
+*.opin DIFFOUT
+*.ipin ADJ
+C6 G1 0 2f m=1
+XM4 net9 EN_N VCC VCC sky130_fd_pr__pfet_01v8 L=8 W=2 nf=1 ad='W * 0.29' as='W * 0.29' pd='W + 2 * 0.29' ps='W + 2 * 0.29' nrd=0 nrs=0
++ sa=0 sb=0 sd=0 mult=1 m=1
+XM18 G2 G2 net7 VSS sky130_fd_pr__nfet_01v8_lvt L=4 W=2 nf=1 ad='W * 0.29' as='W * 0.29' pd='2*(W + 0.29)' ps='2*(W + 0.29)' nrd=0
++ nrs=0 sa=0 sb=0 sd=0 mult=1 m=1
+XM2 G1 G1 net8 VSS sky130_fd_pr__nfet_01v8_lvt L=4 W=2 nf=1 ad='W * 0.29' as='W * 0.29' pd='2*(W + 0.29)' ps='2*(W + 0.29)' nrd=0 nrs=0
++ sa=0 sb=0 sd=0 mult=1 m=1
+XMR G2 PLUS net10 VCC sky130_fd_pr__pfet_01v8_lvt L=2 W=8 nf=1 ad='W * 0.29' as='W * 0.29' pd='2*(W + 0.29)' ps='2*(W + 0.29)' nrd=0
++ nrs=0 sa=0 sb=0 sd=0 mult=1 m=1
+XML G1 MINUS net11 VCC sky130_fd_pr__pfet_01v8_lvt L=2 W=8 nf=1 ad='W * 0.29' as='W * 0.29' pd='2*(W + 0.29)' ps='2*(W + 0.29)' nrd=0
++ nrs=0 sa=0 sb=0 sd=0 mult=1 m=1
+v1 SP net11 0
+.save i(v1)
+C4 SP 0 2f m=1
+C1 G2 0 2f m=1
+C5 DIFFOUT 0 4f m=1
+XM6 DIFFOUT G2 net1 VSS sky130_fd_pr__nfet_01v8_lvt L=4 W=2 nf=1 ad='W * 0.29' as='W * 0.29' pd='2*(W + 0.29)' ps='2*(W + 0.29)' nrd=0
++ nrs=0 sa=0 sb=0 sd=0 mult=1 m=1
+v2 SP net10 0
+.save i(v2)
+v4 net1 VSS 0
+.save i(v4)
+v6 net9 SP 0
+.save i(v6)
+XM7 DIFFOUT EN_N VSS VSS sky130_fd_pr__nfet_01v8 L=0.15 W=0.5 nf=1 ad='W * 0.29' as='W * 0.29' pd='2*(W + 0.29)' ps='2*(W + 0.29)'
++ nrd=0 nrs=0 sa=0 sb=0 sd=0 mult=1 m=1
+XM46 net12 EN_N VCC VCC sky130_fd_pr__pfet_01v8 L=0.15 W=5 nf=1 ad='W * 0.29' as='W * 0.29' pd='W + 2 * 0.29' ps='W + 2 * 0.29' nrd=0
++ nrs=0 sa=0 sb=0 sd=0 mult=1 m=1
+v17 net12 net3 0
+.save i(v17)
+XM12 net2 G1 VSS VSS sky130_fd_pr__nfet_01v8_lvt L=4 W=2 nf=1 ad='W * 0.29' as='W * 0.29' pd='2*(W + 0.29)' ps='2*(W + 0.29)' nrd=0
++ nrs=0 sa=0 sb=0 sd=0 mult=1 m=1
+XM54 net2 net2 net3 VCC sky130_fd_pr__pfet_01v8_lvt L=4 W=4 nf=1 ad='W * 0.29' as='W * 0.29' pd='2*(W + 0.29)' ps='2*(W + 0.29)' nrd=0
++ nrs=0 sa=0 sb=0 sd=0 mult=1 m=1
+XM5 DIFFOUT net2 net3 VCC sky130_fd_pr__pfet_01v8_lvt L=4 W=4 nf=1 ad='W * 0.29' as='W * 0.29' pd='2*(W + 0.29)' ps='2*(W + 0.29)'
++ nrd=0 nrs=0 sa=0 sb=0 sd=0 mult=1 m=1
+XM8 net5 ADJ net4 VCC sky130_fd_pr__pfet_01v8_lvt L=1 W=1 nf=1 ad='W * 0.29' as='W * 0.29' pd='W + 2 * 0.29' ps='W + 2 * 0.29' nrd=0
++ nrs=0 sa=0 sb=0 sd=0 mult=1 m=1
+XM9 net5 ADJ net6 VSS sky130_fd_pr__nfet_01v8_lvt L=1 W=0.5 nf=1 ad='W * 0.29' as='W * 0.29' pd='W + 2 * 0.29' ps='W + 2 * 0.29' nrd=0
++ nrs=0 sa=0 sb=0 sd=0 mult=1 m=1
+XM10 net6 VCC VSS VSS sky130_fd_pr__nfet_01v8_lvt L=8 W=0.5 nf=1 ad='W * 0.29' as='W * 0.29' pd='2*(W + 0.29)' ps='2*(W + 0.29)' nrd=0
++ nrs=0 sa=0 sb=0 sd=0 mult=1 m=1
+XM1 net4 EN_N VCC VCC sky130_fd_pr__pfet_01v8 L=8 W=1 nf=1 ad='W * 0.29' as='W * 0.29' pd='W + 2 * 0.29' ps='W + 2 * 0.29' nrd=0 nrs=0
++ sa=0 sb=0 sd=0 mult=1 m=1
+v3 net5 G1 0
+.save i(v3)
+v5 net7 VSS 0
+.save i(v5)
+v7 net8 VSS 0
+.save i(v7)
+.ends
+
+
+* expanding   symbol:  sky130_tests/gain_stage.sym # of pins=7
+** sym_path: /home/nithinpuru/pdk/sky130A/libs.tech/xschem/sky130_tests/gain_stage.sym
+** sch_path: /home/nithinpuru/pdk/sky130A/libs.tech/xschem/sky130_tests/gain_stage.sch
+.subckt gain_stage IN OUT VCC VSS START_N START EN_N
+*.ipin IN
+*.ipin VSS
+*.ipin VCC
+*.opin OUT
+*.ipin START
+*.ipin START_N
+*.ipin EN_N
+C5 OUT 0 4f m=1
+XM6 OUT IN net1 VSS sky130_fd_pr__nfet_01v8_lvt L=1 W=0.5 nf=1 ad='W * 0.29' as='W * 0.29' pd='2*(W + 0.29)' ps='2*(W + 0.29)' nrd=0
++ nrs=0 sa=0 sb=0 sd=0 mult=1 m=1
+v4 net1 VSS 0
+.save i(v4)
+XM7 OUT EN_N VSS VSS sky130_fd_pr__nfet_01v8 L=0.15 W=0.5 nf=1 ad='W * 0.29' as='W * 0.29' pd='2*(W + 0.29)' ps='2*(W + 0.29)' nrd=0
++ nrs=0 sa=0 sb=0 sd=0 mult=3 m=3
+XM46 net6 EN_N VCC VCC sky130_fd_pr__pfet_01v8 L=0.15 W=5 nf=1 ad='W * 0.29' as='W * 0.29' pd='W + 2 * 0.29' ps='W + 2 * 0.29' nrd=0
++ nrs=0 sa=0 sb=0 sd=0 mult=1 m=1
+v17 net6 net2 0
+.save i(v17)
+XM5 OUT IN net2 VCC sky130_fd_pr__pfet_01v8_lvt L=1 W=1 nf=1 ad='W * 0.29' as='W * 0.29' pd='2*(W + 0.29)' ps='2*(W + 0.29)' nrd=0
++ nrs=0 sa=0 sb=0 sd=0 mult=1 m=1
+XM8 net4 ADJ net3 VCC sky130_fd_pr__pfet_01v8_lvt L=1 W=1 nf=1 ad='W * 0.29' as='W * 0.29' pd='W + 2 * 0.29' ps='W + 2 * 0.29' nrd=0
++ nrs=0 sa=0 sb=0 sd=0 mult=1 m=1
+XM9 net4 ADJ net5 VSS sky130_fd_pr__nfet_01v8_lvt L=1 W=0.5 nf=1 ad='W * 0.29' as='W * 0.29' pd='W + 2 * 0.29' ps='W + 2 * 0.29' nrd=0
++ nrs=0 sa=0 sb=0 sd=0 mult=1 m=1
+XM10 net5 VCC VSS VSS sky130_fd_pr__nfet_01v8_lvt L=4 W=0.5 nf=1 ad='W * 0.29' as='W * 0.29' pd='2*(W + 0.29)' ps='2*(W + 0.29)' nrd=0
++ nrs=0 sa=0 sb=0 sd=0 mult=1 m=1
+XM1 net3 EN_N VCC VCC sky130_fd_pr__pfet_01v8 L=4 W=1 nf=1 ad='W * 0.29' as='W * 0.29' pd='W + 2 * 0.29' ps='W + 2 * 0.29' nrd=0 nrs=0
++ sa=0 sb=0 sd=0 mult=1 m=1
+C1 IN 0 4f m=1
+x6 ADJ OUT START START_N VCC VSS passgate W_N=0.5 L_N=0.15 W_P=0.5 L_P=0.15 m=1
+XC2 ADJ VSS sky130_fd_pr__cap_mim_m3_2 W=10 L=10 MF=2 m=2
+v1 net4 OUT 0
+.save i(v1)
+.ends
+
+**** begin user architecture code
+
+* .option SCALE=1e-6
+.option method=gear
+.option savecurrents
+
+* this experimental option enables mos model bin
+* selection based on W/NF instead of W
+.option wnflag=1
+
+
+.param VCCGAUSS = agauss(1.8, 0.05, 1)
+.param VCC = 'VCCGAUSS'
+** use following line to remove VCC variations
+* .param VCC = 1.8
+
+.param TEMPGAUSS = agauss(40, 30, 1)
+.option temp = 'TEMPGAUSS'
+** use following line to remove temperature variations
+* .option temp = 25
+
+.include stimuli_tb_bandgap_opamp.cir
+.control
+  setseed 9
+  reset
+  let run=0
+  dowhile run <= 100
+    save all
+    tran 1n 4000n uic
+    print run
+    print @m.x1.xml.msky130_fd_pr__pfet_01v8_lvt[vth]
+    print @m.x1.xmr.msky130_fd_pr__pfet_01v8_lvt[vth]
+
+    remzerovec
+    write tb_opamp.raw
+    set appendwrite
+    reset
+    let run = run + 1
+  end
+.endc
+
+
+**** end user architecture code
+.end
